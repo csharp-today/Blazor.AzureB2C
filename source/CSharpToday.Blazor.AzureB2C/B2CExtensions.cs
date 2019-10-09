@@ -10,6 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddB2CAuthorization(this IServiceCollection services, IB2CConfig config) => services
             .AddSingleton(config)
             .AddSingleton<JwtSecurityTokenHandler>()
+            .AddSingleton<ITokenInfoFactory, TokenInfoFactory>()
             .AddSingleton<ITokenValidator, TokenValidator>()
             .AddSingleton<IUrlTokenReader, UrlTokenReader>();
 
