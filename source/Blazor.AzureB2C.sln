@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpToday.Blazor.AzureB2C", "CSharpToday.Blazor.AzureB2C\CSharpToday.Blazor.AzureB2C.csproj", "{9C0978BB-114F-4D46-AEBD-65763AD32BAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpToday.Blazor.AzureB2C.Test", "CSharpToday.Blazor.AzureB2C.Test\CSharpToday.Blazor.AzureB2C.Test.csproj", "{AF4710BF-B8D4-4645-8CAA-03734C40DCE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpToday.Blazor.AzureB2C.Test", "CSharpToday.Blazor.AzureB2C.Test\CSharpToday.Blazor.AzureB2C.Test.csproj", "{AF4710BF-B8D4-4645-8CAA-03734C40DCE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpToday.Blazor.AzureB2C.Http", "CSharpToday.Blazor.AzureB2C.Http\CSharpToday.Blazor.AzureB2C.Http.csproj", "{ECF368A4-3D4B-4DDD-94D5-EBF42CCEFAA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AF4710BF-B8D4-4645-8CAA-03734C40DCE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF4710BF-B8D4-4645-8CAA-03734C40DCE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF4710BF-B8D4-4645-8CAA-03734C40DCE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF368A4-3D4B-4DDD-94D5-EBF42CCEFAA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF368A4-3D4B-4DDD-94D5-EBF42CCEFAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF368A4-3D4B-4DDD-94D5-EBF42CCEFAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF368A4-3D4B-4DDD-94D5-EBF42CCEFAA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
