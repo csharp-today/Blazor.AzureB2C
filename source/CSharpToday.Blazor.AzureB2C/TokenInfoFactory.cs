@@ -1,5 +1,5 @@
-﻿using CSharpToday.Blazor.AzureB2C.Url;
-using CSharpToday.Blazor.AzureB2C.Validators;
+﻿using CSharpToday.Blazor.AzureB2C.Builders;
+using CSharpToday.Blazor.AzureB2C.Url;
 using System;
 using System.Threading.Tasks;
 
@@ -7,18 +7,25 @@ namespace CSharpToday.Blazor.AzureB2C
 {
     internal class TokenInfoFactory : ITokenInfoFactory
     {
-        private readonly ITokenValidator _validator;
+        private readonly ITokenBuilder _noValidationBuilder;
+        private readonly ITokenValidationBuilder _validationBuilder;
 
-        public TokenInfoFactory(ITokenValidator validator) => _validator = validator;
+        public TokenInfoFactory(ITokenBuilder noValidationBuilder, ITokenValidationBuilder validationBuilder)
+        {
+            _noValidationBuilder = noValidationBuilder;
+            _validationBuilder = validationBuilder;
+        }
 
-        public async Task<ITokenInfo> GetTokenInfoAsync(UrlToken urlToken)
+        public async Task<ITokenInfo> GetTokenInfoAsync(UrlToken urlToken, bool skipValidation = false)
         {
             const string InvalidTokenMessage = "Autorization token is invalid";
             try
             {
                 if (urlToken is ValidUrlToken validUrlToken)
                 {
-                    return await _validator.ValidateAsync(validUrlToken.RawToken);
+                    return skipValidation
+                        ? _noValidationBuilder.Build(validUrlToken.RawToken)
+                        : await _validationBuilder.ValidateAndBuildAsync(validUrlToken.RawToken);
                 }
 
                 throw new ApplicationException(InvalidTokenMessage);

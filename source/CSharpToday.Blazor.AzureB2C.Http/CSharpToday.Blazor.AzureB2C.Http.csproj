@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CSharpToday.Blazor.AzureB2C" Version="0.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpToday.Blazor.AzureB2C\CSharpToday.Blazor.AzureB2C.csproj" />
   </ItemGroup>
 
 </Project>

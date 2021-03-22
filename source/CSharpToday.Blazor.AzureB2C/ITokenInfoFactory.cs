@@ -5,6 +5,6 @@ namespace CSharpToday.Blazor.AzureB2C
 {
     public interface ITokenInfoFactory
     {
-        Task<ITokenInfo> GetTokenInfoAsync(UrlToken urlToken);
+        Task<ITokenInfo> GetTokenInfoAsync(UrlToken urlToken, bool skipValidation = false);
     }
 }

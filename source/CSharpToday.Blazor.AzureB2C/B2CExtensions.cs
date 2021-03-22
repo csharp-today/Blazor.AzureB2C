@@ -1,6 +1,6 @@
 ﻿using CSharpToday.Blazor.AzureB2C;
+using CSharpToday.Blazor.AzureB2C.Builders;
 using CSharpToday.Blazor.AzureB2C.Url;
-using CSharpToday.Blazor.AzureB2C.Validators;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -10,8 +10,9 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddB2CAuthorization(this IServiceCollection services, IB2CConfig config) => services
             .AddSingleton(config)
             .AddSingleton<JwtSecurityTokenHandler>()
+            .AddSingleton<ITokenBuilder, TokenBuilder>()
             .AddSingleton<ITokenInfoFactory, TokenInfoFactory>()
-            .AddSingleton<ITokenValidator, TokenValidator>()
+            .AddSingleton<ITokenValidationBuilder, TokenValidationBuilder>()
             .AddSingleton<IUrlTokenReader, UrlTokenReader>();
 
         public static IServiceCollection AddB2CAuthorization(this IServiceCollection services, string loginEntryPointUrl, string openIdConfigUrl) =>

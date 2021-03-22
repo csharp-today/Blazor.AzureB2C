@@ -4,18 +4,18 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 
-namespace CSharpToday.Blazor.AzureB2C.Validators
+namespace CSharpToday.Blazor.AzureB2C.Builders
 {
-    internal class TokenValidator : ITokenValidator
+    internal class TokenValidationBuilder : ITokenValidationBuilder
     {
         private readonly IB2CConfig _config;
         private readonly JwtSecurityTokenHandler _jwtHandler;
 
         private OpenIdConnectConfiguration _configCache;
 
-        public TokenValidator(IB2CConfig config, JwtSecurityTokenHandler jwtHandler) => (_config, _jwtHandler) = (config, jwtHandler);
+        public TokenValidationBuilder(IB2CConfig config, JwtSecurityTokenHandler jwtHandler) => (_config, _jwtHandler) = (config, jwtHandler);
 
-        public async Task<ITokenInfo> ValidateAsync(string token)
+        public async Task<ITokenInfo> ValidateAndBuildAsync(string token)
         {
             var validationParameters = new TokenValidationParameters
             {
