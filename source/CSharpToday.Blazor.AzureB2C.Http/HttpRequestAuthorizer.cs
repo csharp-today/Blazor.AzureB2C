@@ -1,5 +1,5 @@
 ﻿using CSharpToday.Blazor.AzureB2C.Url;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
@@ -16,15 +16,15 @@ namespace CSharpToday.Blazor.AzureB2C.Http
 
         public HttpRequestAuthorizer(ITokenInfoFactory tokenFactory) => _tokenFactory = tokenFactory;
 
-        public async Task<ITokenInfo> GetAuthTokenAsync(HttpRequest request, ILogger log)
+        public async Task<ITokenInfo> GetAuthTokenAsync(HttpRequestData request, ILogger log)
         {
-            if (request is null || !request.Headers.ContainsKey(AuthorizationHeader))
+            if (request is null || !request.Headers.Contains(AuthorizationHeader))
             {
                 log?.LogWarning($"Missing {AuthorizationHeader}");
                 return null;
             }
 
-            var header = request.Headers[AuthorizationHeader].FirstOrDefault();
+            var header = request.Headers.GetValues(AuthorizationHeader).FirstOrDefault();
             if (string.IsNullOrWhiteSpace(header))
             {
                 log?.LogWarning($"Missing {AuthorizationHeader}");
