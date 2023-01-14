@@ -11,8 +11,6 @@ pool:
 
 steps:
 - task: NuGetAuthenticate@1
-  inputs:
-    forceReinstallCredentialProvider: true
 - script: powershell .\build.ps1
   env:
     FeedUser: $(FeedUser)
