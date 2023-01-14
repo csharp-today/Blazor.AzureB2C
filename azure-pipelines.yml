@@ -12,7 +12,6 @@ pool:
 steps:
 - task: NuGetAuthenticate@1
   inputs:
-    nuGetServiceConnections: 'NuGet-Blazor.AzureB2C'
     forceReinstallCredentialProvider: true
 - script: powershell .\build.ps1
   env:
